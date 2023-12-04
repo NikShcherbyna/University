@@ -1,9 +1,20 @@
+import builder.*;
+import devices.ElectronicDevice;
+
 public class Main {
     public static void main(String[] args) {
-        Smartphone iphone = new Smartphone("Apple", "iPhone 12", "Space Gray", "iOS");
-        Tablet samsungTablet = new Tablet("Samsung", "Galaxy Tab S7", "Mystic Black", "11 inches");
+        ElectronicDeviceBuilder desktopBuilder = new DesktopComputerBuilder();
+        ElectronicDeviceBuilder laptopBuilder = new LaptopBuilder();
+        ElectronicDeviceBuilder smartphoneBuilder = new SmartphoneBuilder();
 
-        iphone.displayInfo();
-        samsungTablet.displayInfo();
+        ElectronicDeviceDirector director = new ElectronicDeviceDirector();
+
+        ElectronicDevice desktopComputer = director.buildElectronicDevice(desktopBuilder);
+        ElectronicDevice laptop = director.buildElectronicDevice(laptopBuilder);
+        ElectronicDevice smartphone = director.buildElectronicDevice(smartphoneBuilder);
+
+        desktopComputer.displayInfo();
+        laptop.displayInfo();
+        smartphone.displayInfo();
     }
 }
